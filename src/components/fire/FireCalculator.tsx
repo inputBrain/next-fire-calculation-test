@@ -190,6 +190,18 @@ export default function FireCalculator() {
         dividendYield,
     ]);
 
+    const handleShare = async () => {
+        try {
+            if (navigator.share) {
+                await navigator.share({ url: shareUrl });
+            } else if (navigator.clipboard) {
+                await navigator.clipboard.writeText(shareUrl);
+            }
+        } catch (err) {
+            console.error("Share failed", err);
+        }
+    };
+
     return (
         <div className="mx-auto grid gap-8 py-16 max-tablet:mx-4 max-tablet:w-[calc(100%-32px)] max-tablet:grid-cols-1 max-tablet:py-12 w-[1024px] grid-cols-1">
             <div className="relative flex flex-col">
@@ -365,7 +377,7 @@ export default function FireCalculator() {
                                     type="button"
                                     className="decoration-none relative m-0 flex cursor-pointer select-none items-center justify-center gap-2 overflow-hidden rounded-full border-none bg-[radial-gradient(circle_at_var(--xPos,50%)_var(--yPos,50%),var(--bg2),var(--bg))] text-title-small transition duration-fast ease-curve [--bg2:var(--bg)] disabled:pointer-events-none blur-4 text-content-interactive-secondary [--bg:rgb(var(--background-interactive-secondary-normal))] hover:[--bg2:rgb(var(--background-interactive-secondary-hoverPress))] disabled:text-content-interactive-secondary-disabled disabled:[--bg:rgb(var(--background-interactive-secondary-disabled))] h-12 px-4 w-full"
                                     style={{ "--xPos": "50%", "--yPos": "50%" } as any}
-                                    onClick={() => navigator.clipboard.writeText(shareUrl)}
+                                    onClick={handleShare}
                                 >
                                     Share
                                 </button>

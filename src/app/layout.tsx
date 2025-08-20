@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +11,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-        <body className="min-h-dvh bg-background-surface text-content antialiased">{children}</body>
+            <body className="flex min-h-dvh flex-col bg-background-surface text-content antialiased">
+                <header className="sticky top-0 z-10 flex justify-center bg-background-surface py-4 shadow">
+                    <Link href="/" className="inline-flex items-center">
+                        <Image src="/next.svg" alt="Next.js logo" width={88} height={20} />
+                    </Link>
+                </header>
+                <main className="flex-1">{children}</main>
+            </body>
         </html>
     );
 }

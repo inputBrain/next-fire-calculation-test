@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "../reference-site/_next/static/css/7a336859e42110e0.css";
+@import "../reference-site/_next/static/css/97a54b5942840560.css";
+@import "../reference-site/_next/static/css/a3d70f5d70db87e7.css";
+@import "../reference-site/_next/static/css/c8b13d68339a82bc.css";
 
 #nprogress {
     pointer-events: none
